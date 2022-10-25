@@ -55,7 +55,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'edit',
-        loadChildren: () => import('./pages/edit/edit.routes')
+        loadChildren: () => import('./edit/edit.routes')
       },
       {
         path: 'favorites',
@@ -63,7 +63,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'help',
-        loadChildren: () => import('./pages/help/help.routes')
+        loadChildren: () => import('./help/help.routes')
       }
     ]
   },

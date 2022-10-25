@@ -10,11 +10,13 @@ import { NgComponentOutlet } from '@angular/common';
 import { PopupContainerComponent } from '@components/popup-container/popup-container.component';
 import { UserProfilePopupComponent } from '@popups/user-profile-popup/user-profile-popup.component';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatRippleModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-avatar-button',
   standalone: true,
-  imports: [NgComponentOutlet, ImgShadowComponent, PopupContainerComponent, OverlayModule],
+  imports: [NgComponentOutlet, ImgShadowComponent, PopupContainerComponent, OverlayModule, MatTooltipModule, MatRippleModule],
   templateUrl: './avatar-button.component.html',
   styleUrls: ['./avatar-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

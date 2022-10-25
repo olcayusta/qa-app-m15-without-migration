@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@components/icon/icon.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-search-form',
@@ -30,7 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
     NgIf,
     RouterLink,
     IconComponent,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],
@@ -43,7 +45,7 @@ export class SearchFormComponent implements OnInit {
   @ViewChild('autocompleteTrigger', { read: MatAutocompleteTrigger })
   autoComplete!: MatAutocompleteTrigger;
 
-  constructor(private searchService: SearchService, private router: Router) {
+  constructor(private searchService: SearchService, private router: Router, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -79,6 +81,10 @@ export class SearchFormComponent implements OnInit {
 
   closeAutocomplete() {
     this.autoComplete.closePanel();
+  }
+
+  openTestDialog() {
+
   }
 
   searchWithAudio() {

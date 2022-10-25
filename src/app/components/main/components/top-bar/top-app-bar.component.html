@@ -25,8 +25,7 @@
       <ng-container *ngIf='componentsLoaded; else componentNotLoaded'>
         <ng-container *ngIf='!(isHandset$ | async)'>
 
-          <!-- Filter Button -->
-          <button mat-icon-button (click)='openSheet.emit()'>
+          <button mat-icon-button (click)='openSheet.emit()' matTooltip='Filtre'>
             <app-icon name='tune'></app-icon>
           </button>
 
