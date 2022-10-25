@@ -7,7 +7,7 @@ import { distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators';
   standalone: true
 })
 export class ExtendedFabDirective implements AfterViewInit {
-  private elementRef = inject(ElementRef).nativeElement;
+  private nativeElement = inject(ElementRef).nativeElement;
   private renderer = inject(Renderer2);
 
   ngAfterViewInit() {
@@ -28,9 +28,9 @@ export class ExtendedFabDirective implements AfterViewInit {
       )
       .subscribe((value) => {
         if (value)
-          this.renderer.addClass(this.elementRef, 'mini-fab');
+          this.renderer.addClass(this.nativeElement, 'mini-fab');
         else {
-          this.renderer.removeClass(this.elementRef, 'mini-fab');
+          this.renderer.removeClass(this.nativeElement, 'mini-fab');
         }
       });
   }

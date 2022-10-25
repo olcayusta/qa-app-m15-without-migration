@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '@models/user.model';
@@ -8,7 +8,7 @@ import { SettingsService } from './settings.service';
   providedIn: 'root'
 })
 export class SettingsResolver implements Resolve<User> {
-  constructor(private settingsService: SettingsService) {}
+  private settingsService = inject(SettingsService);
 
   resolve(): Observable<User> {
     return this.settingsService.getAccountSettings();

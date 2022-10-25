@@ -54,23 +54,12 @@ export default class MainComponent implements OnInit, AfterViewInit {
   SideSheetComponent!: Type<SideSheetComponent>;
 
   private document = inject(DOCUMENT);
-
-  /*  private renderer = inject(Renderer2);
-    private cd = inject(ChangeDetectorRef);
-    private snackBar = inject(MatSnackBar);
-    private breakpointObserver = inject(BreakpointObserver);
-    private drawerService = inject(DrawerService);
-    private socketService = inject(SocketService);*/
-
-  constructor(
-    private snackBar: MatSnackBar,
-    private breakpointObserver: BreakpointObserver,
-    private renderer: Renderer2,
-    private changeDetectorRef: ChangeDetectorRef,
-    private drawerService: DrawerService,
-    private socketService: SocketService
-  ) {
-  }
+  private renderer = inject(Renderer2);
+  private changeDetectorRef = inject(ChangeDetectorRef);
+  private snackBar = inject(MatSnackBar);
+  private breakpointObserver = inject(BreakpointObserver);
+  private drawerService = inject(DrawerService);
+  private socketService = inject(SocketService);
 
   ngAfterViewInit() {
     this.drawerService.setSidenav(this.navSidenav);
