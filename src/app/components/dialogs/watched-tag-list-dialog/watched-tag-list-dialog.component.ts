@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,10 +12,6 @@ import { MatChipsModule } from '@angular/material/chips';
   styleUrls: ['./watched-tag-list-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WatchedTagListDialogComponent implements OnInit {
-  constructor() {
-  }
+export class WatchedTagListDialogComponent {
 
-  ngOnInit(): void {
-  }
 }

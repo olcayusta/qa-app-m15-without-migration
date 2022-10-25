@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
@@ -21,6 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeedbackDialogComponent {
+  private formBuilder = inject(FormBuilder);
+
   feedbackForm!: FormGroup;
 
   formControl = new FormControl(null, {
@@ -28,7 +30,7 @@ export class FeedbackDialogComponent {
     updateOn: 'submit'
   });
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor() {
     this.feedbackForm = this.formBuilder.group({
       feedbackText: [null, Validators.required]
     }, {

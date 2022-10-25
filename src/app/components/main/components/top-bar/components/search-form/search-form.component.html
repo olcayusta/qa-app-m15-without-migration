@@ -3,9 +3,6 @@
     <button mat-icon-button aria-label='Ara' matTooltip='Ara'>
       <app-icon name='search'></app-icon>
     </button>
-<!--    <button mat-icon-button aria-label='Ara' matTooltip='Ara'>
-      <app-search-icon></app-search-icon>
-    </button>-->
     <input aria-label='Ara' autocomplete='off' spellcheck='false' placeholder='Ara'
            #autocompleteTrigger="matAutocompleteTrigger"
            [formControl]='searchControl'
@@ -13,7 +10,7 @@
   </div>
 </form>
 
-<!--<button mat-icon-button aria-label='Sesle arama yapın' (click)='searchWithAudio()'>
+<!--<button mat-icon-button aria-label='Sesle arama yapın' (click)='searchWithAudio()' matTooltip='Sesle arama yapın'>
   <svg viewBox='0 0 24 24'>
     <g>
       <rect fill='none' height='24' width='24' />

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FavoriteService } from './favorite.service';
 import { Question } from '@models/question.model';
 import { Observable } from 'rxjs';
@@ -13,10 +13,9 @@ import { AsyncPipe, NgForOf } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FavoritesComponent implements OnInit {
-  questions$!: Observable<Question[]>;
+  private favoriteService = inject(FavoriteService);
 
-  constructor(private favoriteService: FavoriteService) {
-  }
+  questions$!: Observable<Question[]>;
 
   ngOnInit(): void {
     this.questions$ = this.favoriteService.getFavoriteQuestions();

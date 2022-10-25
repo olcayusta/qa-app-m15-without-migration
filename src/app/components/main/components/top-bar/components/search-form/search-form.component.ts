@@ -14,6 +14,7 @@ import { HighlightSearchPipe } from './pipes/highlight-search.pipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@components/icon/icon.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-search-form',
@@ -28,7 +29,8 @@ import { IconComponent } from '@components/icon/icon.component';
     NgForOf,
     NgIf,
     RouterLink,
-    IconComponent
+    IconComponent,
+    MatIconModule
   ],
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],
