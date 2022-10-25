@@ -1,0 +1,23 @@
+<ng-container *ngIf='answers$ | async as answers'>
+  <div class='filter-header' *ngIf='answers.length; else noAnswer'>
+    <div id='answer-count' itemprop='answerCount'>{{answers.length}} Yanıt</div>
+    <button mat-button matTooltip='Cevapları sırala' [matMenuTriggerFor]='sortMenu'>
+      <mat-icon>sort</mat-icon>
+      <span>Sıralama ölçütü</span>
+    </button>
+  </div>
+  <app-answer-item *ngFor='let answer of answers' [answer]='answer'></app-answer-item>
+</ng-container>
+
+<ng-template #noAnswer>
+  <h6 class='headline-6'>Hic yanit yok</h6>
+</ng-template>
+
+<mat-menu #sortMenu>
+  <ng-template matMenuContent>
+    <button mat-menu-item [class.menu-item-active]='index === selectedIndex'
+            *ngFor='let item of sortItems; let index = index' (click)='changeSelectedIndex(index)'>
+      {{item.viewValue}}
+    </button>
+  </ng-template>
+</mat-menu>

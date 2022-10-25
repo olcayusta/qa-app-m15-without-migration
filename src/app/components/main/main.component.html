@@ -1,0 +1,53 @@
+<mat-sidenav-container id='drawer-container'>
+  <mat-sidenav
+    #sidenav
+    position='start'
+    fixedInViewport
+    [autoFocus]='false'
+    (openedStart)='sidenavOpenedStart()'
+    (closedStart)='sidenavClosedStart()'
+  >
+    <ng-container *ngComponentOutlet='NavDrawerComponent'></ng-container>
+  </mat-sidenav>
+
+  <mat-sidenav
+    #sheet
+    position='end'
+    fixedInViewport
+    [autoFocus]='false'
+    [fixedTopGap]="mode == 'side' ? 64 : 0"
+    [mode]='mode'
+    (openedStart)='sheetOpenedStart()'
+    (closedStart)='sheetClosedStart()'
+  >
+    <ng-container *ngComponentOutlet='SideSheetComponent'></ng-container>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-top-app-bar
+      appSticky
+      (openSheet)='loadSidenavSheetComponent(); sheet.toggle()'
+    >
+    </app-top-app-bar>
+    <main>
+      <div id='content'>
+        <div class='my-content'>
+          <router-outlet></router-outlet>
+
+          <div class='fixed-fab-btn'>
+            <a mat-fab routerLink='/questions/create' class='extended-fab' appExtendedFab>
+              <app-icon name='create'></app-icon>
+              <span>Soru sor</span>
+            </a>
+
+          </div>
+
+        <!--  <div class='content-update-chip'>
+            <mat-chip class='mat-elevation-z4'>Yeni sorular (3)</mat-chip>
+          </div>-->
+
+        </div>
+      </div>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

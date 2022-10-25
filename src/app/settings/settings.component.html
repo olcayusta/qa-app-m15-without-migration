@@ -1,0 +1,96 @@
+<!--
+<header>
+  <h3 class="headline-3">Ayarlar</h3>
+</header>
+-->
+
+<!--<qa-account-notifications></qa-account-notifications>-->
+
+<ng-container *ngIf='user'>
+  <div class='center'>
+    <div class='big-hero'>
+      <img
+        src='{{user.picture}}'
+        alt='{{user.displayName}}'
+        (click)='openProfilePictureDialog()'
+      />
+      <h1>{{user.displayName}}</h1>
+    </div>
+
+    <div class='accordion-title'>Kişisel Bilgiler</div>
+
+    <mat-accordion displayMode='flat' class='example-headers-align'>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header collapsedHeight='80px'>
+          <mat-panel-title> FOTOĞRAF</mat-panel-title>
+          <mat-panel-description>
+            Fotoğraf hesabınızı kişiselleştirmeye yardımcı olur.
+            <img [src]='user.picture' alt='' />
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> AD</mat-panel-title>
+          <mat-panel-description> Olcay</mat-panel-description>
+        </mat-expansion-panel-header>
+
+        AA
+
+        <mat-action-row>
+          <button mat-button color='primary'>KAYDET</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!--    <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                AD
+              </mat-panel-title>
+              <mat-panel-description>
+                Olcay Usta
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field>
+              <mat-label>Ad</mat-label>
+              <input matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Soyad</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-action-row>
+              <button mat-button color="primary">KAYDET</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                AD
+              </mat-panel-title>
+              <mat-panel-description>
+                Olcay Usta
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field>
+              <mat-label>Ad</mat-label>
+              <input matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Soyad</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-action-row>
+              <button mat-button color="primary">KAYDET</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>-->
+  </div>
+</ng-container>

@@ -1,0 +1,23 @@
+<button id='avatar-btn'
+        aria-haspopup='true'
+        aria-label='Hesap profil fotoğrafı'
+        #avatarButton='cdkOverlayOrigin' cdkOverlayOrigin
+        (click)='togglePopup()'>
+  <app-img-shadow [src]='user.picture' [width]='32' [height]='32' alt='Avatar resmi'
+                   class='topbar-avatar-button-renderer'></app-img-shadow>
+</button>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]='avatarButton'
+  [cdkConnectedOverlayScrollStrategy]='scrollStrategy'
+  [cdkConnectedOverlayOpen]='popupOpened'
+  (overlayOutsideClick)='closePopupOnOutsideClicked($event)'>
+  <!--  <qa-popup-container popupContainerTitle="avatar" [outlet]="ironDropdownOutlet"></qa-popup-container>-->
+  <app-popup-container (close)='popupOpened = false'>
+    <ng-container *ngComponentOutlet='UserProfilePopupComponent'></ng-container>
+  </app-popup-container>
+</ng-template>
+
+
+

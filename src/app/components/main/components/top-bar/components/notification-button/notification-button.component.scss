@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  margin-right: 8px;
+}
+
+mat-icon {
+  color: var(--medium-emphasis-color);
+}
+
+svg {
+  display: flex;
+}
+
+:host ::ng-deep .mat-badge-active {
+  width: 16px !important;
+  height: 16px !important;
+  font-size: 10px !important;
+  line-height: 16px !important;
+  top: -8px !important;
+  right: 4px !important;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+}

@@ -1,0 +1,30 @@
+<div class="items">
+  <app-home-question-list-item
+    class="hero"
+    *ngFor="let question of questions"
+    [question]="question"
+  >
+  </app-home-question-list-item>
+</div>
+
+<div
+  id="anchor"
+  appIsVisible
+  *ngIf="questions && !dataFinished"
+  (intersected)="loadMoreQuestions()"
+>
+  <mat-spinner diameter="32" *ngIf="loader"></mat-spinner>
+</div>
+
+<!--
+<ng-container *ngIf='questions$ | async as sorular'>
+  <div class='items'>
+    <inek-home-question-list-item *ngFor='let question of sorular' [question]='question'></inek-home-question-list-item>
+  </div>
+
+  <div id='anchor' appIsVisible (scrolled)='loadMorev2()' *ngIf='sorular.length && !dataFinished'>
+    <mat-spinner diameter='32' *ngIf='loader'></mat-spinner>
+  </div>
+</ng-container>
+
+-->

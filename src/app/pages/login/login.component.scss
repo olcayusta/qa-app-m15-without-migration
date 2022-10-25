@@ -1,0 +1,231 @@
+/*@import '~@angular/cdk/text-field/text-field';
+
+// Set custom-autofill inputs to have no background and red text.
+input.custom-autofill {
+  @include cdk-text-field-autofill-color(transparent, red);
+}*/
+
+:host {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+:host:before, :host:after {
+  content: '';
+  display: block;
+  height: 24px;
+}
+
+.account-info {
+  margin: 0 0 40px 0;
+
+  .login-avatar {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    border-radius: 50%;
+    margin: 16px auto;
+  }
+}
+
+.buttons {
+  margin: 16px 0;
+}
+
+.sign-in-button {
+  flex: 1;
+  // height: 48px;
+  letter-spacing: 1.25px;
+}
+
+.login-form-container {
+  position: relative;
+  width: auto;
+  min-height: 600px;
+  padding: 48px;
+  overflow: hidden;
+  // background-color: var(--card-background);
+  border-radius: 12px;
+  background-color: transparent;
+
+  mat-progress-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .or-bracket {
+    height: 1px;
+    background: #c6c6c6;
+    margin-top: 48px;
+    position: relative;
+
+    span {
+      position: absolute;
+      left: 40%;
+      background: #fff;
+      top: -8px;
+      padding: 0 24px;
+      /* font-style: italic; */
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 16px;
+      /* text-transform: uppercase; */
+      /* letter-spacing: 1.5px; */
+      font-weight: 500;
+    }
+  }
+}
+
+@media (min-width: 512px) {
+  .login-form-container {
+    width: 550px;
+    border: 1px solid var(--border-color);
+  }
+}
+
+.form-body {
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px;
+}
+
+h4 {
+  margin: 0;
+  text-align: center;
+}
+
+p {
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--medium-emphasis-color);
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+
+.or {
+  height: 1px;
+  background: var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 64px 0 0;
+}
+
+.or span {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0 24px;
+  background: #fff;
+  color: var(--medium-emphasis-color);
+}
+
+.social-login-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+
+  svg {
+    display: inline-flex;
+    margin-right: 8px;
+  }
+}
+
+button[mat-stroked-button] {
+  border: 1px solid rgba(0, 0, 0, .12);
+}
+
+.row-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+
+  button {
+    margin-left: -8px;
+    // letter-spacing: 1.25px;
+  }
+}
+
+.row-github {
+  /* height: 48px;
+   display: flex;
+   align-items: center;*/
+  // background-color: #24292e;
+  // color: #fff;
+  justify-content: center;
+  cursor: pointer;
+
+  .logo {
+    display: inline-flex;
+  }
+
+}
+
+.row-facebook {
+  svg, path {
+    fill: #000000;
+  }
+}
+
+@media (max-width: 599px) {
+  mat-card {
+    box-shadow: none !important;
+  }
+
+  .page-center {
+    display: flex;
+    place-items: inherit;
+  }
+}
+
+.mat-form-field-appearance-standard .mat-form-field-underline {
+  background-color: rgba(0, 0, 0, .12);
+}
+
+.button-link-row {
+  .mat-button {
+    margin-left: -8px;
+    // letter-spacing: 1.25px;
+  }
+}
+
+.mat-button {
+  letter-spacing: 0;
+}
+
+.github-button {
+  display: flex;
+  align-items: center;
+  font-family: Archivo, sans-serif;
+  grid-gap: 4px;
+  height: 48px !important;
+  box-shadow: none;
+  border-radius: 32px;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+}
+
+
+
+/*
+input:-webkit-autofill {
+  border: 3px solid blue;
+}
+input:autofill {
+  border: 3px solid blue;
+}*/

@@ -1,0 +1,66 @@
+<div class='my-content'>
+
+  <!--  <h6 class='headline-6'>Soru Sor</h6>-->
+
+  <form autocomplete='off' spellcheck='false' [formGroup]='questionForm' (submit)='submit()'>
+    <div class='form-body'>
+
+      <mat-form-field hideRequiredMarker>
+        <mat-label>Başlık</mat-label>
+        <input aria-label='Başlık' matInput formControlName='title'>
+        <mat-error *ngIf="questionForm.get('title')?.hasError('required')">Bir başlık girin</mat-error>
+      </mat-form-field>
+
+      <div>
+        <!--  <div class='buttons'>
+            <button type='button' mat-icon-button matTooltip="Kalın">
+              <mat-icon>format_bold</mat-icon>
+            </button>
+
+            <button type='button' mat-icon-button>
+              <mat-icon>format_italic</mat-icon>
+            </button>
+
+            <button type='button' mat-icon-button>
+              <mat-icon>insert_link</mat-icon>
+            </button>
+
+            <button type='button' mat-icon-button>
+              <mat-icon>format_quote</mat-icon>
+            </button>
+
+            <button type='button' mat-icon-button>
+              <mat-icon>data_object</mat-icon>
+            </button>
+
+            <button type='button' mat-icon-button>
+              <mat-icon>insert_photo</mat-icon>
+            </button>
+          </div>-->
+
+        <mat-form-field appearance='outline' hideRequiredMarker>
+          <mat-label>Açıklama</mat-label>
+          <textarea #markedTextarea (ngModelChange)='onSelectChange($event)' (change)='onSelectChange($event)'
+                    (selectionchange)='onSelectChange($event)' aria-label='Question text' (blur)='onBlur()'
+                    (focus)='onFocus()' matInput
+                    placeholder='Include all the information someone would need to answer your question'
+                    formControlName='description' cdkTextareaAutosize [cdkAutosizeMinRows]='2'
+                    [cdkAutosizeMaxRows]='16'></textarea>
+          <mat-error *ngIf="questionForm.get('description')?.hasError('required')">Bir açıklama girin</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <div class='overline-text'>Önizleme</div>
+        <mat-divider></mat-divider>
+        <div [innerHTML]='questionForm.get("description")?.value' class='description-preview'></div>
+      </div>
+
+      <app-chips-autocomplete></app-chips-autocomplete>
+
+      <div class='form-actions'>
+        <button type='submit' mat-raised-button color='primary'>GÖNDER</button>
+      </div>
+    </div>
+  </form>
+</div>

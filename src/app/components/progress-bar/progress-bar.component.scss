@@ -1,0 +1,19 @@
+mat-progress-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+
+[hidden] {
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+[buffer] {
+  background: #e9dbfd;
+}

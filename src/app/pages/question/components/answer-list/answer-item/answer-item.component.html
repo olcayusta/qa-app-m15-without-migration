@@ -1,0 +1,75 @@
+<div itemprop='suggestedAnswer acceptedAnswer' itemscope itemtype='https://schema.org/Answer'>
+  <div class='answer-item' [id]='"answer-" + answer.id'>
+
+    <div class='answer-item-user'>
+
+      <app-img-shadow [src]='answer.user.picture' [width]='64' [height]='64' [alt]='answer.user.displayName'
+                       class='answer-item-user-renderer'></app-img-shadow>
+
+      <div class='user-info'>
+        <div itemprop='author' itemscope itemtype='https://schema.org/Person'>
+          <a routerLink='/user/{{answer.user.id}}'>
+            <div itemprop='name' class='title'>{{answer.user.displayName}}</div>
+          </a>
+        </div>
+        <div class='subtitle'>
+          <time itemprop='dateCreated'
+                [dateTime]='answer.creationTime'>{{answer.creationTime | relativeTimeFormat}}</time>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      Accept Answer Component
+    -->
+    <button mat-stroked-button color='primary' (click)='acceptAnswer()'>
+      <mat-icon>check</mat-icon>
+      <span>Doğru cevap olarak işaretle</span>
+    </button>
+
+    <!--Answer Text-->
+    <div itemprop='text' [appHeroDelay]='answer.content'></div>
+  </div>
+</div>
+
+<app-answer-item-comment-list [answerId]='answer.id'></app-answer-item-comment-list>
+
+<!--<div class='buttons'>
+  <div>
+    <button mat-button matTooltip='Bunu beğendim'>
+      <app-gf-icon name='favorite'></app-gf-icon>
+      <span>Beğen</span>
+    </button>
+
+    <button mat-button matTooltip='Paylaş'>
+      <app-gf-icon name='share'></app-gf-icon>
+      <span>Paylaş</span>
+    </button>
+
+    <button mat-button>
+      <mat-icon fontSet='material-icons-outlined'>visibility</mat-icon>
+      <span>Takip et</span>
+    </button>
+
+    <button mat-button matTooltip='Favorilere ekle'>
+      <app-gf-icon name='bookmark_add'></app-gf-icon>
+      <span>Favorilere ekle</span>
+    </button>
+
+    &lt;!&ndash;<button mat-icon-button [matMenuTriggerFor]='flagMenu'>
+      <mat-icon fontSet='material-icons-two-tone'>more_horiz</mat-icon>
+    </button>&ndash;&gt;
+
+    <mat-menu #flagMenu='matMenu'>
+      <ng-template matMenuContent>
+        <button mat-menu-item>
+          <app-gf-icon name='flag'></app-gf-icon>
+          <span>Bildir</span>
+        </button>
+      </ng-template>
+    </mat-menu>
+  </div>
+
+</div>-->
+
+<!--<mat-divider></mat-divider>-->

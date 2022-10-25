@@ -1,0 +1,11 @@
+<header>
+  <h5 class='headline-5'>Etiketler</h5>
+  <p class='subtitle-1 page-description'>Our latest news, updates, and stories for developers</p>
+</header>
+
+<mat-form-field appearance='outline' [formControl]='searchControl'  ngDefaultControl>
+  <mat-label>Search...</mat-label>
+  <input matInput autocomplete='off' spellcheck='false'>
+</mat-form-field>
+
+<app-tag-list></app-tag-list>

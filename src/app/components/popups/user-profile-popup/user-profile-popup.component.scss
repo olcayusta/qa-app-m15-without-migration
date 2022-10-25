@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  width: 344px;
+}
+
+.popup-page {
+  background-color: var(--card-bg-color);
+  max-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  header {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+
+  &__avatar {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+
+
+.avatar {
+  display: inline-flex;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.title {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.subtitle {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--medium-emphasis-color);
+}
+
+mat-nav-list {
+  padding-top: 0;
+}
+
+:host .mat-list-item {
+  height: 40px;
+}
+
+mat-icon {
+  color: var(--medium-emphasis-color);
+}
+
+span {
+  margin-left: 16px;
+}
+
+section {
+  overflow: auto;
+}

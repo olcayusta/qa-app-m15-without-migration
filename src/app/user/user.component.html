@@ -1,0 +1,61 @@
+<header class='header'>
+  <div class='header__user'>
+    <div class='header-user__avatar'>
+      <app-img-shadow [width]='160' [height]='160' [src]='user.picture' [alt]='user.displayName'
+                       class='user-img-renderer'></app-img-shadow>
+    </div>
+
+    <div class='header__details'>
+      <h4 class='headline-4'>{{user.displayName}}</h4>
+      <div class='header__meta'>
+
+        <!-- Signup date -->
+        <div class='meta-item'>
+          <mat-icon>cake</mat-icon>
+          <time [attr.datetime]='user.signupDate'>{{user.signupDate | relativeTimeFormat}}</time>
+        </div>
+
+        <!-- Last seen time -->
+        <div class='meta-item'>
+          <mat-icon>history</mat-icon>
+          <time [attr.datetime]='user.lastSeenTime'>{{user.lastSeenTime | myDate: 'tasty'}}</time>
+        </div>
+
+        <!-- Website url -->
+        <div class='meta-item'>
+          <mat-icon>web</mat-icon>
+          <span>blog.patrickmcdonald.org</span>
+        </div>
+
+        <!-- Location -->
+        <div class='meta-item'>
+          <mat-icon>map</mat-icon>
+          <span>Dublin, Ireland</span>
+        </div>
+
+        <!-- Social account links -->
+        <div class='social-auth'>
+          <a href='//github.com/{{user.githubUrl}}' target='_blank'>
+            <img src='https://webdev.imgix.net/images/icons/github.svg' alt=''>
+          </a>
+          <a href='//github.com/{{user.twitterUrl}}'>
+            <img src='https://webdev.imgix.net/images/icons/twitter.svg' alt=''>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav mat-tab-nav-bar mat-align-tabs='center' [tabPanel]='tabPanel'>
+  <a mat-tab-link *ngFor='let link of links'
+     [routerLinkActiveOptions]='{exact: true}'
+     routerLinkActive='mat-tab-label-active'
+     #rla='routerLinkActive'
+     routerLink='/user/{{user.id}}/{{link.path.toLocaleLowerCase()}}'
+     [active]='rla.isActive'> {{link.label}} </a>
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+
+<router-outlet></router-outlet>

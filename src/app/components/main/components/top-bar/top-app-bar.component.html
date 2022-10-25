@@ -1,0 +1,128 @@
+<mat-toolbar class='mat-elevation-z4'>
+  <div class='mat-toolbar__start'>
+    <button mat-icon-button aria-label='Open navigation drawer' (click)='toggleSidenav()'
+            class='menu-button'>
+      <app-icon name='menu'></app-icon>
+    </button>
+    <app-top-app-bar-logo></app-top-app-bar-logo>
+  </div>
+
+  <div class='mat-toolbar__center'>
+    <ng-container *ngIf='!(isHandset$ | async)' [ngComponentOutlet]='searchFormComponentOutlet'></ng-container>
+  </div>
+
+  <div class='mat-toolbar__end'>
+    <ng-container *ngIf='isLoggedIn$ | async; else signIn'>
+
+      <!--         <button mat-icon-button matTooltip='İncelemeler'>
+                 <mat-icon class='material-icons-outlined' matBadge='4' matBadgeColor='warn'>rate_review</mat-icon>
+               </button>-->
+               <button mat-icon-button class='badge-icon' aria-label='Achievements (2 new reputation)' aria-haspopup='true'
+                       title='You have new reputation changes' role='menuitem' aria-expanded='false'>
+                 <app-icon name='award' matBadge='+2'></app-icon>
+               </button>
+
+      <ng-container *ngIf='componentsLoaded; else componentNotLoaded'>
+        <ng-container *ngIf='!(isHandset$ | async)'>
+
+          <!-- Filter Button -->
+          <button mat-icon-button (click)='openSheet.emit()'>
+            <app-icon name='tune'></app-icon>
+          </button>
+
+          <!-- Notification Button -->
+          <ng-container *ngComponentOutlet='NotificationButtonComponent'></ng-container>
+
+          <!-- Avatar Button -->
+          <ng-container *ngComponentOutlet='AvatarButtonComponent'></ng-container>
+        </ng-container>
+
+        <ng-container *ngIf='(isHandset$ | async)'>
+          <!-- Search Button -->
+          <a mat-icon-button routerLink='/search'>
+            <app-icon name='search'></app-icon>
+          </a>
+
+          <!-- Notification Button -->
+          <ng-container *ngComponentOutlet='NotificationButtonComponent'></ng-container>
+
+          <!-- Avatar Button -->
+          <ng-container *ngComponentOutlet='AvatarButtonComponent'></ng-container>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #componentNotLoaded>
+        <div class='masthead-skeleton-icon'></div>
+        <div class='masthead-skeleton-icon'></div>
+        <div class='masthead-skeleton-icon'></div>
+      </ng-template>
+
+      <!--<inek-notification-button></inek-notification-button>-->
+      <!-- <inek-avatar-button></inek-avatar-button>-->
+
+    </ng-container>
+  </div>
+
+  <!--  <mat-progress-bar mode="indeterminate" *ngIf="spinner$ | async"></mat-progress-bar>-->
+
+
+</mat-toolbar>
+
+<ng-template #signIn>
+  <ng-container *ngIf='isHandset$ | async'>
+    <a mat-icon-button routerLink='/search'>
+      <app-icon name='search'></app-icon>
+    </a>
+
+    <a mat-icon-button routerLink='/login'>
+      <app-icon name='account_circle'></app-icon>
+    </a>
+  </ng-container>
+
+  <ng-container *ngIf='!(isHandset$ | async)'>
+    <button mat-icon-button [matMenuTriggerFor]='moreMenu' matTooltip='Ayarlar'>
+      <app-icon name='more_vert'></app-icon>
+    </button>
+
+    <a mat-button routerLink='/login' (click)='signInButtonClicked()'>
+      OTURUM AÇ
+    </a>
+
+    <!-- Apps Menu -->
+    <mat-menu #appsMenu>
+      <ng-template matMenuContent>
+        <button mat-menu-item>
+          <span>Blog</span>
+        </button>
+      </ng-template>
+    </mat-menu>
+
+    <!-- More Menu -->
+    <mat-menu #moreMenu xPosition='before'>
+      <ng-template matMenuContent>
+        <button mat-menu-item>
+          <app-icon name='dark_mode'></app-icon>
+          <span>Görünüm: Cihaz teması</span>
+        </button>
+        <button mat-menu-item>
+          <app-icon name='settings'></app-icon>
+          <span>Ayarlar</span>
+        </button>
+        <a mat-menu-item routerLink='/help'>
+          <app-icon name='help'></app-icon>
+          <span>Yardım</span>
+        </a>
+        <button mat-menu-item>
+          <app-icon name='feedback'></app-icon>
+          <span>Geri bildirim gönder</span>
+        </button>
+        <button mat-menu-item>
+          <app-icon name='keyboard'></app-icon>
+          <span>Klavye kısayolları</span>
+        </button>
+      </ng-template>
+    </mat-menu>
+
+  </ng-container>
+</ng-template>
+

@@ -1,0 +1,98 @@
+:host {
+  display: block;
+  margin-bottom: 24px;
+
+  .host-container {
+    display: flex;
+    align-items: center;
+    padding: 24px 0 0 0;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
+
+/**
+  For mobile
+ */
+:host::-webkit-scrollbar {
+  display: none;
+}
+
+button[aria-expanded='true'] {
+  background-color: rgba(98, 0, 238, 0.12);
+  color: #6200ee;
+
+  mat-icon {
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 599px) {
+  :host {
+    display: block;
+    overflow: auto;
+    padding: 0 0 0 16px;
+
+    .outlined-menu-button {
+      margin-left: 16px;
+    }
+
+    .last-child {
+      padding-right: 16px;
+    }
+
+    button {
+      min-width: auto !important;
+    }
+
+    :last-child {
+      // padding-right: 24px;
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .header {
+    display: flex;
+
+/*    h5 {
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 500;
+    }*/
+  }
+
+  .host-container {
+    padding-top: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .header-buttons {
+    // display: none;
+    margin-left: -8px;
+  }
+}
+
+/**
+    FILTER CONTAINER
+    ====================
+*/
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  transition: all 1s;
+  padding: 24px 0;
+}
+
+mat-nav-list {
+  margin: 0 -16px;
+
+  mat-icon {
+    margin-right: 16px;
+  }
+}

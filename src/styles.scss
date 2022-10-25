@@ -1,0 +1,248 @@
+@use "styles/reset";
+@use '@angular/material' as mat;
+
+$typography-configuration: mat.define-typography-config(
+  $font-family: 'Archivo, "Helvetica Neue", sans-serif',
+  $display-4: mat.define-typography-level(112px, 112px, 300),
+  $display-3: mat.define-typography-level(56px, 56px, 400),
+  $display-2: mat.define-typography-level(100px, 48px, 400),
+  $display-1: mat.define-typography-level(100px, 34px, 400),
+  $headline: mat.define-typography-level(24px, 32px, 400),
+  $title: mat.define-typography-level(20px, 32px, 500),
+  $subheading-2: mat.define-typography-level(14px, 24px, 500),
+  $subheading-1: mat.define-typography-level(16px, 24px, 400),
+  $body-2: mat.define-typography-level(14px, 20px, 400),
+  $body-1: mat.define-typography-level(16px, 24px, 400),
+  $caption: mat.define-typography-level(12px, 16px, 400),
+  $button: mat.define-typography-level(14px, 14px, 500),
+  $input: mat.define-typography-level(inherit, 1.125, 400)
+);
+
+@include mat.core($typography-configuration);
+
+$custom-typography: mat.define-typography-config(
+  $font-family: 'Archivo, sans-serif',
+);
+
+$headlines-and-subtitles-typography: mat.define-typography-config(
+  $font-family: 'Archivo, sans-serif'
+);
+
+$body-and-captions-typography: mat.define-typography-config(
+  $font-family: 'Roboto, sans-serif',
+);
+
+$snackbar-typo: mat.define-typography-config(
+  $font-family: 'Archivo, sans-serif',
+);
+
+$my-custom-level: mat.define-typography-level(14px, 24px, 700, $letter-spacing: 10px);
+
+// Badge typography
+$badge-typo: mat.define-typography-config(
+  $font-family: 'Archivo, sans-serif'
+);
+
+// List typography
+$list-typography: mat.define-typography-config(
+  $font-family: 'Archivo, sans-serif'
+);
+
+// Chips typography
+$chip-typography: mat.define-typography-config(
+  $font-family: 'Roboto, sans-serif',
+  $body-2: mat.define-typography-level(14px, 20px, 400)
+);
+
+@include mat.tabs-typography($headlines-and-subtitles-typography);
+@include mat.form-field-typography($body-and-captions-typography);
+@include mat.radio-typography($body-and-captions-typography);
+@include mat.option-typography($body-and-captions-typography);
+@include mat.tooltip-typography($body-and-captions-typography);
+
+/**
+  Body and captions
+ */
+@include mat.badge-typography($body-and-captions-typography);
+@include mat.checkbox-typography($body-and-captions-typography);
+@include mat.snack-bar-typography($body-and-captions-typography);
+@include mat.menu-typography($body-and-captions-typography);
+@include mat.optgroup-typography($body-and-captions-typography);
+@include mat.option-typography($badge-typo);
+@include mat.autocomplete-typography($body-and-captions-typography);
+@include mat.snack-bar-typography($badge-typo);
+@include mat.card-typography($badge-typo);
+
+html {
+  background-color: var(--html-bg-color);
+  color: var(--color);
+  // scrollbar-gutter: stable;
+
+  @supports (overflow: overlay) {
+    // overflow: overlay;
+  }
+
+  @supports (scrollbar-width: thin) {
+    // scrollbar-width: thin;
+    // scrollbar-color: #00000060 transparent;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Archivo, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+svg {
+  width: 24px;
+  height: 24px;
+  // fill: var(--icon-color);
+}
+
+/**
+  Mdc menu elevation
+ */
+// box-shadow: 0 8px 10px rgba(0, 0, 0, 0.14), 0 3px 14px rgba(0, 0, 0, 0.12), 0 5px 5px rgba(0, 0, 0, 0.2);
+
+.mat-optgroup .mat-option:not(.mat-option-multiple) {
+  // padding-left: 24px !important;
+}
+
+:not(pre) > code {
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: #00000012;
+  letter-spacing: 0;
+  padding: 0 4px;
+  border-radius: 4px;
+  display: inline-flex;
+}
+
+.thin-scrollbar {
+  // For Chrome, Safari.
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 16px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    min-height: 56px;
+    border: 4px solid transparent;
+    background-color: transparent;
+    background-clip: content-box;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-background);
+
+    &:hover {
+      background-color: var(--thumb-bg-hover);
+    }
+  }
+
+  @supports (scrollbar-width: thin) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color);
+  }
+}
+
+[standardized-themed-scrollbar]::-webkit-scrollbar {
+  width: 16px;
+  background-color: var(--scrollbar-bg-color);
+  border-left: 1px solid var(--border-color);
+  // MacOS Style
+  // background: linear-gradient(90deg,rgb(0 0 0 / 08%),rgb(0 0 0 / 08%) 1px,#fafafa 0,#fafafa);
+}
+
+[standardized-themed-scrollbar]::-webkit-scrollbar-thumb {
+  min-height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: var(--scrollbar-thumb-background);
+}
+
+[standardized-themed-scrollbar]::-webkit-scrollbar-thumb:hover {
+  background-color: var(--thumb-bg-hover);
+}
+
+/**
+  Mat-ink-bar
+ */
+.mat-ink-bar {
+  height: 3px !important;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+/**
+  Noscript
+ */
+noscript {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  place-content: center;
+  gap: 24px;
+
+  img {
+    display: flex;
+    width: 200px;
+    border-radius: 4px;
+  }
+}
+
+.mat-menu-panel {
+  border-radius: 8px !important;
+}
+
+// For Chrome, Safari.
+.mat-menu-panel::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 16px;
+}
+
+.mat-menu-panel::-webkit-scrollbar-thumb {
+  border-radius: 16px;
+  min-height: 56px;
+  border: 4px solid transparent;
+  background-color: transparent;
+  background-clip: content-box;
+}
+
+.mat-menu-panel:hover::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-background);
+
+  &:hover {
+    background-color: var(--thumb-bg-hover);
+  }
+}
+
+
+.material-symbols-outlined {
+  color: var(--medium-emphasis-color);
+  font-variation-settings: 'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.material-symbols-outlined.active {
+  font-variation-settings: 'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
