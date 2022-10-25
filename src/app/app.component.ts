@@ -7,7 +7,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { filter, map } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
 import { BroadcastChannelService } from '@shared/services/broadcast-channel.service';
-import { environment } from '@environments/environment';
+import { PUBLIC_VAPID_KEY_OF_SERVER } from '@environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -30,13 +30,13 @@ export class AppComponent implements OnInit {
   }
 
   private document = inject(DOCUMENT);
+  private snackBar = inject(MatSnackBar);
+  private pushService = inject(PushNotificationService);
+  private swPush = inject(SwPush);
+  private swUpdate = inject(SwUpdate);
 
   constructor(
-    private pushService: PushNotificationService,
     private broadcastChannel: BroadcastChannelService,
-    private snackBar: MatSnackBar,
-    private swPush: SwPush,
-    private swUpdate: SwUpdate,
     private zone: NgZone // private dialog: MatDialog
   ) {
     // THEME FIX
@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
 
   async unsubscribeToPush() {
     const sub = await this.swPush.requestSubscription({
-      serverPublicKey: environment.PUBLIC_VAPID_KEY_OF_SERVER
+      serverPublicKey: PUBLIC_VAPID_KEY_OF_SERVER
     });
 
     this.pushService.sendUnsubscriptionToTheServer(sub).subscribe((value) => {
@@ -95,7 +95,7 @@ export class AppComponent implements OnInit {
     if (this.swPush.isEnabled) {
       try {
         const sub = await this.swPush.requestSubscription({
-          serverPublicKey: environment.PUBLIC_VAPID_KEY_OF_SERVER
+          serverPublicKey: PUBLIC_VAPID_KEY_OF_SERVER
         });
         /*       const permission = Notification.permission;
         if (permission === 'granted') {
@@ -104,7 +104,6 @@ export class AppComponent implements OnInit {
           console.log('Not subscribed to push service!');
           this.pushService.sendSubscriptionToTheServer(sub).subscribe();
         }*/
-
         this.pushService.sendSubscriptionToTheServer(sub).subscribe();
       } catch (e) {
         console.error(`Could not subscribe due to:`, e);
