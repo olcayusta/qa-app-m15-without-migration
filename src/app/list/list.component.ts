@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Question } from '@models/question.model';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
@@ -23,8 +23,8 @@ export class ListComponent implements OnInit {
 
   isLoggedIn$!: Observable<boolean>;
 
-  constructor(private listService: ListService, private authService: AuthService) {
-  }
+  private listService = inject(ListService);
+  private authService = inject(AuthService);
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.authService.isLoggedIn$;

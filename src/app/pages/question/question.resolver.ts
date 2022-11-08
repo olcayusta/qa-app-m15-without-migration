@@ -1,17 +1,9 @@
-import { inject, Injectable } from '@angular/core';
-import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { inject } from '@angular/core';
+import { ResolveFn } from '@angular/router';
 import { QuestionService } from './question.service';
 import { Question } from '@models/question.model';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class QuestionResolver implements Resolve<Question> {
-  private questionService = inject(QuestionService);
-
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Question> {
-    const questionId = Number(route.paramMap.get('questionId'));
-    return this.questionService.getQuestion(questionId);
-  }
-}
+export const questionResolveFn: ResolveFn<Question> = (route) => {
+  const questionId = Number(route.paramMap.get('questionId'));
+  return inject(QuestionService).getQuestion(questionId);
+};

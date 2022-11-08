@@ -1,19 +1,19 @@
 import { Routes } from '@angular/router';
 import { QuestionComponent } from './question.component';
-import { QuestionResolver } from './question.resolver';
-import { QuestionTitleResolver } from './resolvers/question-title.resolver';
+import { questionResolveFn } from './question.resolver';
+import { questionTitleResolveFn } from './resolvers/question-title.resolver';
 
 export default [
   {
     path: '',
     resolve: {
-      question: QuestionResolver
+      question: questionResolveFn
     },
     children: [
       {
         path: '',
         component: QuestionComponent,
-        title: QuestionTitleResolver
+        title: questionTitleResolveFn
       }
     ]
   }

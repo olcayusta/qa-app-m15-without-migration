@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@environments/environment';
+import { API_URL } from '@environments/environment';
 import { Question } from '@models/question.model';
 import { Observable } from 'rxjs';
 
@@ -8,10 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ListService {
-  constructor(private http: HttpClient) {
-  }
+  private http = inject(HttpClient);
 
   getMyQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(`${environment.apiUrl}/me/list`);
+    return this.http.get<Question[]>(`${API_URL}/me/list`);
   }
 }
