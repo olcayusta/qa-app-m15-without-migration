@@ -82,17 +82,19 @@ svg {
 
 .mat-list-item.active {
   /* States_primary overlay/Selected */
-  background: rgba(187, 134, 252, 0.08);
-  color: #BB86FC !important;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff !important;
 
   mat-icon {
     color: #BB86FC !important;
   }
 
-  app-gf-icon svg {
-    fill: #BB86FC !important;
+  app-icon svg {
+    fill: #fff !important;
   }
 }
+
+
 
 .mat-progress-bar-background {
   fill: #BB86FC;

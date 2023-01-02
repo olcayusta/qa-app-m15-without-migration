@@ -116,22 +116,26 @@ svg {
 }
 
 .mat-list-item.active {
-  color: var(--mdc-theme-primary) !important;
+  // color: var(--mdc-theme-primary) !important;
+  color: black !important;
   font-weight: 500 !important;
   // background-color: rgba(0, 0, 0, .12);
 
   mat-icon {
-    color: var(--mdc-theme-primary) !important;
+    color: black !important;
+    // color: var(--mdc-theme-primary) !important;
   }
 
   app-icon svg {
     // fill: var(--mdc-theme-primary);
-    fill: mat.get-color-from-palette($my-palette, 500)
+    // fill: mat.get-color-from-palette($my-palette, 500)
+    fill: black;
   }
 
   /* Primary Overlay */
   // background: linear-gradient(0deg, rgba(187, 134, 252, 0.12), rgba(187, 134, 252, 0.12)), #FFFFFF;
-  background-color: var(--mdc-theme-primary-overlay-selected);
+  // background-color: var(--mdc-theme-primary-overlay-selected);
+  background-color: rgba(0, 0, 0, .08);
 }
 
 /**
